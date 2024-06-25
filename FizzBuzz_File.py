@@ -24,8 +24,4 @@ def FizzBuzz(start, finish):
     return myEmptyList
 
 
-# Test
-start = 1
-finish = 15
-result = FizzBuzz(start, finish)
-print(result)
+
