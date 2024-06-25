@@ -1,19 +1,28 @@
+import numpy as np
+
 def FizzBuzz(start, finish):
-    numbers = np.arange(start, finish + 1)
+    # Create the number array
+    numvec = np.arange(start, finish+1, dtype=object)
     
-    # Conditions for FizzBuzz
-    condlist = [
-        (numbers % 15 == 0),
-        (numbers % 3 == 0),
-        (numbers % 5 == 0)
-    ]
+    # Initialize the array for results
+    objvec = np.array(numvec, dtype=object)
     
-    choicelist = ['FizzBuzz', 'Fizz', 'Buzz']
+    # Vectorized FizzBuzz
+    fizz_mask = (numvec % 3 == 0)
+    buzz_mask = (numvec % 5 == 0)
+    fizzbuzz_mask = fizz_mask & buzz_mask
     
-    output = np.select(condlist, choicelist, default=numbers.astype(str))
+    objvec[fizzbuzz_mask] = "FizzBuzz"
+    objvec[fizz_mask & ~fizzbuzz_mask] = "Fizz"
+    objvec[buzz_mask & ~fizzbuzz_mask] = "Buzz"
     
-    # Convert numpy array to Python list
-    return output.tolist()
+    # Convert the result to a list by appending elements
+    myEmptyList = []
+    for elem in objvec:
+        myEmptyList.append(elem)
+    
+    return myEmptyList
+
 
 # Test
 start = 1
