@@ -1,15 +1,24 @@
+
+import numpy as np
+
 def FizzBuzz(start, finish):
-    outlist = []
-    for num in range(start, finish + 1):
-        if num % 3 == 0 and num % 5 == 0:
-            outlist.append("fizzbuzz")
-        elif num % 3 == 0:
-            outlist.append("fizz")
-        elif num % 5 == 0:
-            outlist.append("buzz")
-        else:
-            outlist.append(str(num))  # Convert number to string and append
+  
+    numvec = np.arange(start, finish+1, dtype=object)
+       
+    objvec = np.array(numvec, dtype=object)
     
-    return outlist
+    fizz_mask = (numvec % 3 == 0)
+    buzz_mask = (numvec % 5 == 0)
+    fizzbuzz_mask = fizz_mask & buzz_mask
+    
+    objvec[fizzbuzz_mask] = "fizzbuzz"
+    objvec[fizz_mask & ~fizzbuzz_mask] = "fizz"
+    objvec[buzz_mask & ~fizzbuzz_mask] = "buzz"
+    
+    myEmptyList = []
+    for elem in objvec:
+        myEmptyList.append(elem)
+    
+    return myEmptyList
 
 
