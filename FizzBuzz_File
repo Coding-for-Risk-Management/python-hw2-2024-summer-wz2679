@@ -14,3 +14,9 @@ def FizzBuzz(start, finish):
     
     # Convert numpy array to Python list
     return output.tolist()
+
+# Test
+start = 1
+finish = 15
+result = FizzBuzz(start, finish)
+print(result)
