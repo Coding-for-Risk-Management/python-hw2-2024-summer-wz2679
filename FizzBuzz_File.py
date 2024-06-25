@@ -2,11 +2,11 @@ def FizzBuzz(start, finish):
     outlist = []
     for num in range(start, finish + 1):
         if num % 3 == 0 and num % 5 == 0:
-            outlist.append("FizzBuzz")
+            outlist.append("fizzbuzz")
         elif num % 3 == 0:
-            outlist.append("Fizz")
+            outlist.append("fizz")
         elif num % 5 == 0:
-            outlist.append("Buzz")
+            outlist.append("buzz")
         else:
             outlist.append(str(num))  # Convert number to string and append
     
